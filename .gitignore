@@ -1,0 +1,16 @@
+# Local .terraform directories
+**/.terraform/*
+
+# .tfvars files
+*.tfvars
+*.auto.tfvars
+
+# Ignore all .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Ignore directories named cache
+**/cache/
+
+# Terraform lock file
+.terraform.lock.hcl
