@@ -4,11 +4,7 @@ resource "aws_lb" "network_lb" {
     load_balancer_type = "network"
     subnets = [ for subnet in aws_subnet.subnet[*] : subnet.id ]
   
- tags = merge(
-    var.common_tags,
-    {
-      Name = "${var.resource_prefix} network LB"
-    },
-  )
-
+ tags = {
+    Name = var.name
+  }
 }

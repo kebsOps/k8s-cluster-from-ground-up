@@ -3,19 +3,10 @@ variable "region" {
   type        = string
 }
 
-variable "resource_prefix" {
-  description = "Common prefix for all resources"
-  type        = string
-  default     = "k8s-cluster-from-ground-up"
-}
 
-variable "common_tags" {
-  description = "Common tags for all resources"
-  type        = map(string)
-  default     = {
-    Project = "k8s-cluster-from-ground-up"
-    Owner   = "KebsOps"
-  }
+variable "name" {
+  type = string
+  
 }
 
 

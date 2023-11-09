@@ -16,4 +16,9 @@
 .terraform.lock.hcl
 
 # SSH files
-*.pem
+**/ssh/*
+
+# ca authority files
+**/ca-authority/*
+
+.DS_Store

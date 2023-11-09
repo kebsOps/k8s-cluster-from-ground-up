@@ -6,12 +6,9 @@ resource "aws_route_table" "route_table" {
         gateway_id = aws_internet_gateway.internet_gateway.id
     }
 
-    tags = merge(
-    var.common_tags,
-    {
-      Name = "${var.resource_prefix} route table"
-    },
-  )
+  tags = {
+    Name = var.name
+  }
 }
 
 resource "aws_main_route_table_association" "route_table" {

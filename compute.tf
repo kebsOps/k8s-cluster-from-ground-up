@@ -27,15 +27,15 @@ resource "aws_instance" "master_node" {
     subnet_id = aws_subnet.subnet.id
     private_ip = "172.31.0.1${count.index}"
     source_dest_check = false
-   
+    user_data = <<EOF
+    #!/bin/bash
+    name="master-${count.index}"
+  EOF
 
-    tags = merge(
-    var.common_tags,
-    {
-      Name = "${var.resource_prefix}-${count.index} Master Node"
-    },
-  )
-  
+
+  tags = {
+    Name = "${var.name}-master-${count.index}"
+  }
 }
 
 resource "aws_instance" "worker_node" {
@@ -48,12 +48,16 @@ resource "aws_instance" "worker_node" {
     subnet_id = aws_subnet.subnet.id
     private_ip = "172.31.0.2${count.index}"
     source_dest_check = false
-   
-    
-    tags = merge(
-    var.common_tags,
-    {
-      Name = "${var.resource_prefix}-${count.index} Worker Node"
-    },
-  )
+    user_data = <<-EOF
+    #!/bin/bash
+    name="worker-${count.index}"
+    # Set pod CIDR if needed, otherwise remove or comment out the next line
+    pod_cidr="172.20.${count.index}.0/24"
+  EOF
+
+
+  tags = {
+    Name = "${var.name}-worker-${count.index}"
+  }
 }
+

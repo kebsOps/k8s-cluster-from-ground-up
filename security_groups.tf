@@ -47,11 +47,9 @@ resource "aws_security_group" "sg" {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
-     tags = merge(
-    var.common_tags,
-    {
-      Name = "${var.resource_prefix} security group"
-    },
-  )
+  
+  tags = {
+    Name = var.name
+  }
 }
 
