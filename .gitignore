@@ -2,7 +2,7 @@
 **/.terraform/*
 
 # .tfvars files
-*.tfvars
+# *.tfvars
 # *.auto.tfvars
 
 # Ignore all .tfstate files
