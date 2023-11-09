@@ -53,3 +53,18 @@ resource "aws_dynamodb_table" "terraform_locks" {
     },
   )
  }
+
+ resource "aws_subnet" "subnet" {
+   vpc_id = aws_vpc.vpc.id
+   cidr_block = var.subnet_cidr
+   map_public_ip_on_launch = true
+  tags = merge(
+    var.common_tags,
+    {
+      Name = "${var.resource_prefix} subnet"
+    },
+  )
+
+ }
+
+ 
