@@ -40,10 +40,7 @@ variable "tg_name" {
   
 }
 
-variable "lb_tg_attach" {
-  description = "target group attachment"
-  type =  string   
-}
+
 
 variable "key_name" {
   description = "The name of the key pair"
